@@ -1,0 +1,246 @@
+/* static/css/styles.css */
+
+/* Import a modern Google Font for a sleek look */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  overflow-x: hidden;
+}
+
+/* Global animated background */
+.background {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #764ba2, #667eea);
+  animation: backgroundPan 20s linear infinite;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+@keyframes backgroundPan {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(25%, 25%) scale(1.2); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Container for page content */
+.content {
+  position: relative;
+  padding: 40px;
+  margin: 20px auto;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  animation: contentFadeIn 1s ease-out;
+}
+
+@keyframes contentFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Navigation styles with hover animations */
+nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #333;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #667eea;
+}
+
+nav a::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  background: #667eea;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Flash messages for notifications */
+.flashes {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.flashes li {
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.flashes .success { background-color: #d4edda; color: #155724; }
+.flashes .error { background-color: #f8d7da; color: #721c24; }
+.flashes .info { background-color: #cce5ff; color: #004085; }
+
+/* ------------------------- */
+/* Authentication Page Styles */
+/* ------------------------- */
+
+/* Container for login and registration forms */
+.auth-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  animation: scaleUp 0.5s ease-out;
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container form label {
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.auth-container form input[type="text"],
+.auth-container form input[type="password"],
+.auth-container form input[type="file"],
+.auth-container form input[type="radio"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.auth-container form input:focus {
+  border-color: #667eea;
+}
+
+.auth-container form button {
+  padding: 12px;
+  background: #667eea;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.auth-container form button:hover {
+  background: #556cd6;
+}
+
+/* ------------------------- */
+/* Homepage & Quiz Styling   */
+/* ------------------------- */
+
+.home-container {
+  text-align: center;
+}
+
+.home-container h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.home-container p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.quiz-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.quiz-container p {
+  font-size: 1.1em;
+  color: #333;
+}
+
+/* Tip message animation */
+.fade-in-tip {
+  animation: fadeIn 2s ease-in-out;
+  font-style: italic;
+  margin-top: 20px;
+  color: #444;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ------------------------- */
+/* Responsive Adjustments    */
+/* ------------------------- */
+@media (max-width: 768px) {
+  .content {
+    margin: 10px;
+    padding: 20px;
+  }
+  
+  nav a {
+    margin: 0 10px;
+  }
+}
+
+  
+  /* Add this to static/css/styles.css */
+.fade-in-tip {
+    animation: fadeIn 2s ease-in-out;
+    font-style: italic;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  
