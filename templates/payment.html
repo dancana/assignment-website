@@ -1,0 +1,15 @@
+<!-- templates/payment.html -->
+{% extends "base.html" %}
+{% block title %}Payment{% endblock %}
+{% block content %}
+<h2>Payment</h2>
+<p>To access the quiz game and assignments, please pay 10 KSH.</p>
+<form method="post">
+  <label>Select Payment Method:</label><br>
+  <input type="radio" id="mpesa" name="payment_method" value="mpesa" required>
+  <label for="mpesa">M-Pesa</label><br>
+  <input type="radio" id="paypal" name="payment_method" value="paypal" required>
+  <label for="paypal">PayPal</label><br><br>
+  <button type="submit">Pay 10 KSH</button>
+</form>
+{% endblock %}

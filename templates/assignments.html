@@ -1,0 +1,22 @@
+<!-- templates/assignments.html -->
+{% extends "base.html" %}
+{% block title %}Assignments{% endblock %}
+{% block content %}
+<h2>Assignments & Past Papers</h2>
+
+{% if session.get('username') == 'admin' %}
+  <!-- Upload form only shown to admin -->
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit">Upload File</button>
+  </form>
+  <hr>
+{% endif %}
+
+<h3>Available Files:</h3>
+<ul>
+  {% for file in assignments %}
+    <li>{{ file.filename }} - <a href="{{ url_for('download', file_id=file.id) }}">Download</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

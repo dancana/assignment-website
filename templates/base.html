@@ -1,0 +1,38 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}School Resources{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="background"></div>
+  <div class="content">
+    <nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      {% if session.get('user_id') %}
+        <a href="{{ url_for('assignments') }}">Assignments</a>
+        <a href="{{ url_for('quiz') }}">Quiz Game</a>
+        <a href="{{ url_for('payment') }}">Payment</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+  <!-- Reference to additional JavaScript functionalities -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

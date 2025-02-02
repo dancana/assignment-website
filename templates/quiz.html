@@ -1,0 +1,22 @@
+<!-- templates/quiz.html -->
+{% extends "base.html" %}
+{% block title %}Quiz Game{% endblock %}
+{% block content %}
+<h2>Quiz Game</h2>
+<div class="quiz-container">
+  <p><strong>Question:</strong> {{ question.text }}</p>
+  <form method="post">
+    {% for choice in question.choices %}
+      <input type="radio" id="{{ choice }}" name="choice" value="{{ choice }}" required>
+      <label for="{{ choice }}">{{ choice }}</label><br>
+    {% endfor %}
+    <br>
+    <button type="submit">Submit Answer</button>
+  </form>
+  <br>
+  <p><strong>Python AI Answer:</strong> {{ ai_choice }}</p>
+  {% if result %}
+    <p><strong>Result:</strong> {{ result }}</p>
+  {% endif %}
+</div>
+{% endblock %}
